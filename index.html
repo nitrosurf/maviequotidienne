@@ -1,0 +1,104 @@
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        jQuery("#plugin-menu .plugin-nav a").click(function () {
+            jQuery("#plugin-menu .content > ul").hide();
+            jQuery("#plugin-menu .plugin-nav ul li").removeClass("active");
+            jQuery(this).parent().addClass("active");
+            jQuery("#" + jQuery(this).data("toggle")).show();
+            return false;
+        });
+    });
+</script>
+
+<p class="page-header">
+    <span class="lead">Plugin pour la vie quotidienne</span><br/><br/>
+
+Ce plugin n'est en réalité qu'un regroupement de plugin. Avec une demande à Sarah, plusieurs actions de la vie quotidienne vont s'effectuer!
+Pour le bon fonctionnement de ce plugin il est nécessaire de prendre connaissance du matériel, plugins, et connaissances requis.<br/><br/>
+
+    <b>Connaissances requises :</b><br/>
+    -Avoir suivi et appliqué le tutorial 12 de IDLEMAN sur l'allumage à distance d'une prise électrique <a href="http://blog.idleman.fr/raspberry-pi-12-allumer-des-prises-distance/">Ici</a><br/>
+
+    <b>Matériels requis :</b><br/>
+    - Un raspberry pi relié sur votre réseau avec un module emetteur 433Mhz<br/>
+
+    <b>Plugins et programmes requis :</b><br/>
+    - XBMC<br/>
+    - Google Traffic<br/>
+    - Température (fourni dans l'archive de ce plugin)<br/>
+    - FreeboxOS<br/>
+    - Arret<br/>
+    - Avoir installé l'archive HCC <a href="http://projet.idleman.fr/domopi/data/hcc/hcc.zip">Ici</a> en suivant les instructions du tutorial 12 d'IDLEMAN sur le RASPBERRY <br/><br/>
+
+    <b>V1.0 :</b><br/>
+    - Réveil (allumage de votre cafetière, allumage de votre home cinéma, lancement de la radio sur RASPBMC)<br/>
+    - Départ au travail (arrêt de tous les modules (éclairage), arrêt de la lecture en cours RASPBMC, Information pratique : temps de parcours, température, conseil vestimentaire)<br/>
+    - Au dodo ! (Arret de tout les modules, arrêt de la lecture en cours RASPBMC, Mise en veille du PC Sarah)<br/>
+    - Départ de la maison (arrêt de tous les modules (éclairage), arrêt de la lecture en cours RASPBMC)<br/>
+    - Je suis levé ! (proposition d'allumage d'UN module (éclairage), proposition d'allumage de la cafetière, proposition d'allumage du home cinéma, proposition de choix de radio RASPBMC)<br/>
+    - Retour à la maison (proposition d'allumage d'UN module (éclairage), proposition d'annonce du nombres d'appel manqués FREEBOX)<br/>
+    <br/><b>Remerciements pour leurs aides et conseils :</b><br/>
+    - Jérome VEYRET<br/>
+    - Jean-Philippe Encausse<br/>
+- Alexis BARRY<br/>
+- Franck Wehrlé<br/>
+- et tous ceux que j'oublie....<br/>
+</p>
+
+<div id="plugin-menu" class="row-fluid">
+    <!-- Navigation -->
+    <div class="span3 well plugin-nav">
+        <ul class="nav nav-list">
+            <li class="nav-header">Documentation</li>
+            <li class="active"><a href="" data-toggle="plugin-doc">Préparation</a></li>
+            <li class="nav-header">Configurations nécéssaires</li>
+            <li><a href="#" data-toggle="plugin-arret">Plugin Arret</a></li>
+            <li><a href="#" data-toggle="plugin-temperature">Température</a></li>
+        </ul>
+    </div>
+    <!-- Content -->
+    <div class="span9 content">
+
+        <ul class="unstyled" id="plugin-doc">
+            1°) Vérifiez que tous les plugins nécessaires sont opérationnels.<br/>
+            2°) Compléter le fichier <em>"maviequotidienne.prop"</em> depuis l'interface web de Sarah<br/>
+<b><em> Détails du .prop</em></b><br/><br/>
+- nom1, nom2 : vos prénoms biensur .<br/>
+- Raspberry : adresse ip de votre raspberry gérant le 433Mhz (tuto 12 Idleman) terminant par /hcc .<br/>
+- Sarah : adresse ip de votre serveur Sarah.<br/>
+- idradioreveil : l'id de votre radio (raspbmc) pour le réveil en musique.<br/>
+Vous trouverez l'id dans le .xml de VOTRE plugin XBMC ou sur <em>http://radio.fr/info/index/searchembeddedbroadcast?start=0&rows=10&q=Nom Radio</em> .<br/>
+- radio1, radio2, radio3 : trois noms de vos radios préférées (en phonétique pour une meilleur reconnaissance)<br/>
+- idradio1, idradio2, idradio3 : les 3 id des vos radios préférées.<br/>
+- nommodule1 à nommodule5 : le nom de vos matériels reliés à vos prises éléctriques ou modules de marque "CHACON" (tuto 12 Idleman).<br/>
+- idmodule1 à idmodule5 : id attribuées à vos modules. Vous pouvez les retrouver dans l'interface HCC (tuto 12 Idleman).<br/>
+- module1 à module5 : code radio que vous avez attribué à votre module dans la configuration de l'interface HCC (tuto 12 idleman).<br/>
+<b>ATTENTION : le module 4 est réservé pour une cafetière dans ma config (voir partie de maviequotidienne.js : "je suis levé!").<br/>
+ATTENTION : le module 5 est réservé pour un matériel HIFI (Home cinéma) dans ma config (voir partie de maviequotidienne.js : "je suis levé!").</b><br/>
+-nommoduletout :  nom pour l'arret de tout les modules (voir partie de maviequotidienne.js : "je suis levé!").<br/><br/>
+            3°) Editez le fichier <em>"maviequotidienne.xml"</em> à votre convenance.<br/>
+            4°) Lisez le fichier <em>"maviequotidienne.js"</em>, chaque groupe d'exécution est séparé par un commentaire du type //*********       ***********// .<br/>
+Chaque exécution est séparée par un commentaire du type //**************.<br/>
+5°) Pour désactiver une exécution qui vous serez inutile en fonction de votre installation ou de vos besoins, placer simplement <b>//</b> devant toutes les lignes de l'exécution pour la désactiver.<br/>
+6°) Pensez à modifier les textes et callback pour les adapter à vos besoins.<br/>
+        </ul>
+
+        <ul class="unstyled" id="plugin-arret" style="display: none;">
+            
+            Modification à effectuer :<br/>
+Dans le fichier arret.js, remplacer pour la rubrique "arret immédiat", la ligne de commande <b>cmd /c shutdown /t</b> par <b>cmd /c shutdown /h</b> .<br/>
+Cette modification va permettre de mettre votre ordinateur en veille prolongée et donc un rallumage rapide sans besoin de relancer SARAH qui sera toujours active.<br/>
+Vous pouvez programmer un horaire de sortie de veille prolongée, grace au programme WakeuponStandby.
+Vous pouvez suivre ce <a href="http://www.pcastuces.com/pratique/windows/planifier_demarrage/" target="_blank"><b>tuto</b></a> pour sa mise en place. 
+		
+            
+        </ul>
+
+        <ul class="unstyled" id="plugin-temperature" style="display: none;">
+            Le plugin température est fourni dans l'archive maviequotidienne.zip et doit être installé dans vos plugins.<br/>
+Il s'agit simplement du plugin meteo2 modifié pour annoncer la température extérieure ou la météo actuelle de votre lieu d'habitation et quelques conseils vestimentaires en fonction de la température et des prévisions de pluie dans les 3 heures (intéressant si vous travaillez en extérieur).<br/>
+Compléter l'id de votre ville dans le fichier temperature.prop sur l'interface web de Sarah.<br/>
+Pour connaitre l'id, rendez vous sur la page ci dessous en plaçant votre nom de ville à la fin du lien avant FR.<br/>
+http://api.openweathermap.org/data/2.5/weather?units=metric&lang=fr&q=LE NOM DE VOTRE VILLE,fr<br/>
+    </div>
+</div>

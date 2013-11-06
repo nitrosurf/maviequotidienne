@@ -1,0 +1,20 @@
+<grammar version="1.0" xml:lang="fr-FR" mode="voice" root="rulemaviequotidienne" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+  <rule id="rulemaviequotidienne" scope="public">
+    <example>Sarah je suis rentré ?</example>
+    <tag>out.action=new Object(); </tag>
+    <tag>out._attributes.dictation="false";</tag>
+    <item>Jarvisse</item>
+    
+    <one-of>
+      
+      <item>c'est Vincent je suis levé<tag>out.action.mavie="debout";</tag></item>
+      <item>c'est Vincent je suis de retour<tag>out.action.mavie="retour1";</tag></item>
+      <item>c'est Coralie je suis de retour<tag>out.action.mavie="retour2";</tag></item>
+      <item>c'est Vincent je pars<tag>out.action.mavie="depart";</tag></item>
+      <item>c'est Vincent je vais me coucher<tag>out.action.mavie="dodo";</tag></item>
+    </one-of>
+  
+    
+    <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/maviequotidienne";</tag>
+  </rule>
+</grammar>

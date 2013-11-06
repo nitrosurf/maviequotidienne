@@ -1,0 +1,20 @@
+﻿<grammar version="1.0" xml:lang="fr-FR" mode="voice" root="ruletemperature" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+  <rule id="ruletemperature" scope="public">
+    <example>Sarah quelle est la météo pour demain ?</example>
+    <tag>out.action=new Object(); </tag>
+    <tag>out._attributes.dictation="false";</tag>
+    <item>Jarvisse</item>
+    
+    <one-of>
+      
+      <item>quelle sont les conditions météo<tag>out.action.meteo="bilan";</tag></item>
+      <item>quelle est la température<tag>out.action.meteo="temp";</tag></item>
+      <item>comment doije mabiller<tag>out.action.meteo="habillement";</tag></item>
+    </one-of>
+  
+    
+    <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/temperature";</tag>
+  </rule>
+
+ 
+</grammar>

@@ -1,0 +1,9 @@
+{
+  "modules" : { 
+    "temperature"  : {
+      "description": "Température extérieure, météo actuelle et conseils",
+      "version": "1.0",
+      "id": "2982317"
+}
+  }
+}

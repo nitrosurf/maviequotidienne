@@ -1,0 +1,37 @@
+{
+  "modules" : { 
+    "maviequotidienne"  : {
+      "description": "Vie quotidienne avec Raspberry pi et XBMC",
+      "version": "1.0",
+        "nom1" : "Vincent",
+          "nom2" : "Coralie",
+"raspberry" : "http://192.168.0.59/hcc",
+"sarah" : "http://192.168.0.51:8080",
+"tts" : "http://192.168.0.51:8888",
+ "idradioreveil" : "7066",
+ "radio1" : "jazz radio lounge",
+ "idradio1" : "7066",
+ "radio2" : "énérgie",
+ "idradio2" : "8280",
+ "radio3" : "Radio FG",
+ "idradio3" : "1577",
+   "nommodule1" : "le salon",
+   "idmodule1" : "id-30",
+     "module1" : "4",
+       "nommodule2" : "la cuisine",
+     "idmodule2" : "id-25",
+     "module2" : "1",
+       "nommodule3" : "la salle à manger",
+       "idmodule3" : "id-32",
+     "module3" : "5",
+       "nommodule4" : "la caftière",
+   "idmodule4" : "id-26",
+     "module4" : "2",
+       "nommodule5" : "le home cinéma",
+   "idmodule5" : "id-29",
+     "module5" : "3",
+       "nommoduletout" : "rien du tout"
+       
+    }
+  }
+}
